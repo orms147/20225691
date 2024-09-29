@@ -1,3 +1,33 @@
+//Ques<--------------------------------------------->
+
+1.What happens if users choose “Cancel”? :
+
+Nếu lựa chọn Cancel”, chương trình sẽ xử lý giống với lựa chọn NO, bởi vì câu lệnh chỉ kiểm tra xem lựa chọn có phải YES_OPTION không, nếu không phải thì mặc định sẽ là NO
+
+2.How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do”and “I don’t”"
+
+Ta sẽ xử lý từ cấu trúc của showOptionDialog : public static int showOptionDialog(Component parentComponent,
+											   Object message,
+											   String title,
+											   int optionType,
+											   int messageType,
+											   Icon icon,
+											   Object[] options,
+											   Object initialValue)
+								   
+Trước hết tạo mảng có chứa tùy chọn : Object[] options = {"I do", "I don't"};
+	int option = JOptionPane.showOptionDialog(null,
+		"<....>",
+		"<....>",
+		JOptionPane.YES_NO_OPTION,
+		JOptionPane.QUESTION_MESSAGE,
+		null,
+		options,								//Mẩng tùy chọn
+		options[0]);							//Gía trị mặc định khi Enter
+Sau đó xử lý lựa chọn : 
+	String choice = (option == 0) ? "I do" : "I don't";
+	JOptionPane.showMessageDialog(null, "You've chosen: " + choice);
+
 //2.2.5
 import javax.swing.JOptionPane;
 public class ChoosingOption {
